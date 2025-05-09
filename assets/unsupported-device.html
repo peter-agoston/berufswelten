@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>BKW Lebensräume</title>
+</head>
+<style>
+	html {
+		font-family: 'BKW Klint Regular', sans-serif;
+		font-size: 40px;
+	}
+
+	body {
+		background-color: #F2F2F2;
+		padding: 0px 0px;
+		margin: 0px 0px;
+	}
+
+	.header-panel {
+		background-color: black;
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		padding: 20px 12px 20px 8px;
+		gap: 0px;
+		color: #BFBFBF;
+		font-size: 1rem;
+	}
+
+	.container {
+		height: 100vh;
+		align-items: flex-start;
+		padding: 12px;
+		font-size: 1rem;
+	}
+
+	@font-face {
+		font-family: BKW Klint Regular;
+		src: url("./bkw/fonts/KlintforBKWW05-Regular.woff2") format('woff2');
+	}
+
+	@font-face {
+		font-family: BKW Klint Bold;
+		src: url("./bkw/fonts/KlintforBKWW05-Bold.woff2") format('woff2');
+		font-weight: 700;
+	}
+
+	.title {
+		font-family: 'BKW Klint Bold', sans-serif;
+		font-size: 1.30rem;
+		font-weight: 700;
+		text-align: left;
+		margin-top: 20px;
+		margin-bottom: 20px;
+	}
+
+	.description {
+		font-family: 'BKW Klint Regular', sans-serif;
+		font-size: 1.125rem;
+		font-weight: 400;
+		text-align: left;
+		margin-bottom: 10px;
+	}
+
+	.version {
+		font-family: 'BKW Klint Regular', sans-serif;
+		font-size: 1.125rem;
+		font-weight: 400;
+		text-align: left;
+		color: #5b5e66;
+		margin-top: 20px;
+	}
+
+	.button-icon {
+		width: 32px;
+		height: 32px;
+		background-image: url(./bkw/icons/close.svg);
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
+		fill: white;
+		margin-right: 15px;
+	}
+</style>
+<script type="text/javascript">
+	function displayUserAgent() {
+		const userAgent = window.navigator.userAgent;
+		if (/(iPhone|iPad|iPod)/.test(userAgent)) {
+			let versionMatch = userAgent.match(/OS (\d+_\d+)/i);
+			let version = versionMatch ? versionMatch[1].replace('_', '.') : '';
+			let decimalVersion = parseFloat(version);
+			document.getElementById("userAgent").textContent = !isNaN(decimalVersion) ? decimalVersion : userAgent;
+		}
+		//Check for Android devices
+		else if (userAgent.toLowerCase().indexOf('android') > -1) {
+			var androidVersion = userAgent.match(/Android\s([0-9\.]*)/);
+			let version = androidVersion ? androidVersion[1] : '';
+			let decimalVersion = parseFloat(version);
+			document.getElementById("userAgent").textContent = !isNaN(decimalVersion) ? decimalVersion : userAgent;
+		}
+		else {
+			document.getElementById("userAgent").textContent = userAgent;
+		}
+	}
+</script>
+<body onload="displayUserAgent()">
+<div class="header-panel">
+	<a href="https://www.bkw.ch"
+	   style="text-decoration: none; color: white; font-family: 'BKW Klint Regular', sans-serif; display: flex; align-items: center">
+		<div class="button-icon"></div>
+		BKW
+		Startseite</a>
+</div>
+<div class="container">
+	<div class="title">Ihr Betriebsystem wird nicht unterstützt</div>
+	<div class="description">
+		Mindestanforderungen:<br>Apple iOS 16.4 (2023)<br>Android 11 (2020)<br><br>Bitte aktualisieren Sie Ihr Betriebssystem oder
+		nutzen Sie ein neueres Gerät.
+	</div>
+	<div style="height: 20px"></div>
+	<div class="title">Votre système d'exploitation n'est pas pris en charge</div>
+	<div class="description">
+		Configuration minimale requise :<br>
+		Apple iOS 16.4 (2023)<br>
+		Android 11 (2020)
+		<br><br>
+		Veuillez mettre à jour votre système d'exploitation ou utiliser un appareil plus récent.
+	</div>
+	<br>
+	<div class="version">
+		Your os version is:<p id="userAgent"></p>
+	</div>
+</div>
+</body>
+</html>
